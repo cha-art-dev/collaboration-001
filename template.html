@@ -2,20 +2,47 @@
 <head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.7/p5.min.js"></script>
   <script>
+  var BACKGROUND_SRC = '4x4/image-1-1.png'; // <<-- CHANGE THIS TO YOUR ASSIGNED IMAGE
+  var IMAGE_DIMENSION = 500;    // Don't change this.
+
+  var overlay;
 
   function setup() {
-    createCanvas(500, 500);
+    createCanvas(IMAGE_DIMENSION, IMAGE_DIMENSION);
     colorMode(RGB, 255);
     noStroke();
+    overlay = loadImage(BACKGROUND_SRC);
+    mouseX = -1;
   }
 
   function draw() {
+    clear(); // leave this at the top
+
+    //=============== START DRAWING HERE =======================
+
+
+    //================ END DRAWING HERE ========================
+
+    drawOverlay(); // leave this at the bottom
+  }
+
+  function mouseOver() {
+    return mouseX >= 0 && mouseX < IMAGE_DIMENSION
+        && mouseY >= 0 && mouseY < IMAGE_DIMENSION
+  }
+
+  function drawOverlay() {
+    if ( mouseOver() ) {
+      tint(255,255 * mouseX / IMAGE_DIMENSION);
+      image(overlay, 0, 0, 500, 500);
+      tint(255,255);
+    }
   }
 
   </script>
   <style>
-    body {padding: 0; margin: 0;}
-    canvas {margin: 0 auto; display:block;}
+    body {padding: 0; margin: 5% 0 0; background-color: #ccc;}
+    canvas {margin: 0 auto; display:block; background-color: white;}
   </style>
 </head>
 <body>
