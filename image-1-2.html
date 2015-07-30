@@ -22,7 +22,7 @@
 
     // Background
     background(202,188,155);
-    drawOverlay();
+
 
     // Top left thing
     fill(113,104,86);
@@ -34,18 +34,19 @@
 
     // Background R2D2
     fill(209,208,182);
-    rect(225,0,280,115);
+    rect(265,0,280,115);
 
     fill(184,170,124);
-    rect(225,115,280,63);
-
-    // Shadow
-    fill(20,16,0);
-    rect(205,175,300,5);
+    rect(265,115,280,63);
 
     // Left foot
-    fill(160,147,100);
-    rect(205,180,60,60);
+    fill(209,208,182);
+    rect(225,0,20,35);
+    rect(212,35,45,205);
+
+    fill(20,16,0);
+    rect(232,25,8,55);
+    rect(232,85,8,12);
 
     fill(209,208,182);
     quad(205,240,265,240,300,340,170,340)
@@ -57,12 +58,17 @@
     rect(227,270,15,50);
     rect(170,340,130,10);
 
-    fill(67,59,41,20);
+    stroke(160,124,74);
+    strokeWeight(3);
+    line(223,280,245,280);
+
+    noStroke()
+    fill(120,100,54,80);
     ellipse(235,360,170,10);
 
     // Front foot
     fill(160,147,100);
-    rect(380,180,70,80);
+    rect(390,180,50,80);
 
     fill(209,208,182);
     quad(380,260,450,260,500,400,330,400)
@@ -70,31 +76,21 @@
     fill(20,16,0);
     rect(410,250,10,20);
 
-    fill(67,59,41,40);
+    fill(120,100,54,80);
     ellipse(430,409,230,10);
 
     fill(184,170,124);
-    rect(406,300,20,80);
+    rect(406,295,20,80);
     rect(330,400,170,10);
 
 
 
     // Body
-    // Left side
-    fill(5,3,5);
-    rect(205,0,20,180);
-
-    fill(160,147,100,80);
-    rect(225,0,40,175);
-
-    fill(113,104,86);
-    rect(240,12,18,55);
-    rect(240,77,18,12);
 
     // Top Squares
     noFill()
     stroke(168,160,128);
-    strokeWeight(3);
+    strokeWeight(2);
     rect(300,0,30,25);
     stroke(195,186,155);
     rect(350,0,80,25);
@@ -107,14 +103,14 @@
     fill(211,220,214);
     rect(275,35,60,65);
 
+
     fill(5,3,5);
-    stroke(195,186,155);
-    strokeWeight(2);
+    noStroke()
     rect(351,35,60,65);
     rect(283,45,20,45);
 
     noFill();
-    strokeWeight(3);
+    strokeWeight(2);
     stroke(209,208,182);
     ellipse(381,68,58,58);
 
@@ -126,23 +122,30 @@
     ellipse(381,68,20,20);
 
     noFill();
-    strokeWeight(3)
+    strokeWeight(2)
     stroke(195,186,155);
     rect(425,35,40,65);
     rect(480,35,40,65);
 
     // Row 3
     stroke(120,100,54);
-    rect(237,125,40,40);
-    rect(295,125,40,40);
-    rect(353,125,40,40);
-    rect(410,125,68,40);
-    rect(495,125,40,40);
+    rect(275,125,20,40);
+    rect(308,125,40,40);
+    rect(360,125,40,40);
+    rect(413,125,68,40);
+    rect(493,125,40,40);
 
+    // Shadow
+    stroke('rgba(20,16,0,0.75)');
+    strokeCap(SQUARE)
+    strokeWeight(3);
 
+    line(265,178,500,178);
+    //line(263,0,263,178);
+    noStroke();
 
     //================ END DRAWING HERE ========================
-
+    drawOverlay();
   }
 
   function rotateEllipse(x,y,rx,ry,angle) {
