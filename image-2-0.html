@@ -1,0 +1,99 @@
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.7/p5.min.js"></script>
+  <script>
+  var BACKGROUND_SRC = '3x3/image-2-0.png'; // <<-- CHANGE THIS TO YOUR ASSIGNED IMAGE
+  var IMAGE_DIMENSION = 500;    // Don't change this.
+
+  var overlay;
+
+  function setup() {
+    createCanvas(IMAGE_DIMENSION, IMAGE_DIMENSION);
+    colorMode(RGB, 255);
+    noStroke();
+    overlay = loadImage(BACKGROUND_SRC);
+    mouseX = -1;
+  }
+
+  function draw() {
+    clear(); // leave this at the top
+
+    //=============== START DRAWING HERE =======================
+
+      background(165,155,115);
+
+// lightest lines
+      stroke(220);
+      strokeWeight(285);
+      line(0,311,600,321);
+      line(0,111,600,121);
+
+// ochre lines/shapes
+
+      stroke(165,155,115);
+      fill(185,180,165);
+      strokeWeight(8);
+      line(415,320,407,500);
+      noStroke();
+      ellipse(455,455,70,70);
+      rect(430,330,50,330);
+      rect(450,210,25,230);
+      rect(460,70,12,230);
+
+//  gold lines/shapes
+      stroke(190,176,156);
+      strokeWeight(8);
+      line(415,375,495,375);
+      line(415,375,495,375);
+
+// darker lines // line (x1,y1,x2,y2)
+      stroke(100);
+      strokeWeight(4);
+      line(0,484,16,500);
+      line(0,484,0,500);
+      strokeWeight(6);
+      line(357,462,357,434);
+      strokeWeight(8);
+      point(458,72,2);
+      point(478,75,4);
+      strokeWeight(2);
+      line(0,457,400,462);
+      ellipse(455,375,50,13);
+      ellipse(455,422,30,13);
+      strokeWeight(8);
+      line(450,422,451,400);
+      line(497,456,497,449);
+
+      // quad(20,20,30,30,40,40,50,50);
+
+
+    //================ END DRAWING HERE ========================
+
+    drawOverlay(); // leave this at the bottom
+  }
+
+  function mouseOver() {
+    return mouseX >= 0 && mouseX < IMAGE_DIMENSION
+        && mouseY >= 0 && mouseY < IMAGE_DIMENSION
+  }
+
+  function drawOverlay() {
+    if ( mouseOver() ) {
+      tint(255,255 * mouseX / IMAGE_DIMENSION);
+
+
+      // tint(255,150);
+      image(overlay, 0, 0, 500, 500);
+      tint(255,255);
+   }
+  }
+
+  </script>
+  <style>
+    body {padding: 0; margin: 5% 0 0; background-color: #ccc;}
+    canvas {margin: 0 auto; display:block; background-color: white;}
+  </style>
+</head>
+<body>
+</body>
+</html>
