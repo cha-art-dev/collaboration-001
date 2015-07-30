@@ -2,7 +2,7 @@
 <head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.7/p5.min.js"></script>
   <script>
-  var BACKGROUND_SRC = '4x4/image-1-1.png'; // <<-- CHANGE THIS TO YOUR ASSIGNED IMAGE
+  var BACKGROUND_SRC = '4x4/image-2-1.png'; // <<-- CHANGE THIS TO YOUR ASSIGNED IMAGE
   var IMAGE_DIMENSION = 500;    // Don't change this.
 
   var overlay;
@@ -20,13 +20,15 @@
 
     //=============== START DRAWING HERE =======================
 
-
     //================ END DRAWING HERE ========================
 
     drawOverlay(); // leave this at the bottom
   }
 
   function mouseOver() {
+
+   document.querySelector("#coords").innerHTML = parseInt(mouseX) + ', ' + parseInt(mouseY);
+
     return mouseX >= 0 && mouseX < IMAGE_DIMENSION
         && mouseY >= 0 && mouseY < IMAGE_DIMENSION
   }
@@ -46,5 +48,6 @@
   </style>
 </head>
 <body>
+    <div id="coords" name="coords" />
 </body>
 </html>
