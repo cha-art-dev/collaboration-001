@@ -158,8 +158,8 @@
   }
 
   function drawOverlay() {
-    if ( !mouseOver() ) {
-      tint(255,150) //,255 * mouseX / IMAGE_DIMENSION);
+    if ( mouseOver() ) {
+      tint(255,255 * mouseX / IMAGE_DIMENSION);
       image(overlay, 0, 0, 500, 500);
       tint(255,255);
     }
