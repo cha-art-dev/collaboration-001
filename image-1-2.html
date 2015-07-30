@@ -1,0 +1,176 @@
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.7/p5.min.js"></script>
+  <script>
+  var BACKGROUND_SRC = '3x3/image-1-2.png'; // <<-- CHANGE THIS TO YOUR ASSIGNED IMAGE
+  var IMAGE_DIMENSION = 500;    // Don't change this.
+
+  var overlay;
+
+  function setup() {
+    createCanvas(IMAGE_DIMENSION, IMAGE_DIMENSION);
+    colorMode(RGB, 255);
+    noStroke();
+    overlay = loadImage(BACKGROUND_SRC);
+    mouseX = -1;
+  }
+
+  function draw() {
+    clear(); // leave this at the top
+
+    //=============== START DRAWING HERE =======================
+
+    // Background
+    background(202,188,155);
+    drawOverlay();
+
+    // Top left thing
+    fill(113,104,86);
+    rotateEllipse(0,0,43,105,1);
+
+    // Bottom left thing
+    fill(113,104,86);
+    rotateEllipse(0,350,110,55,3);
+
+    // Background R2D2
+    fill(209,208,182);
+    rect(225,0,280,115);
+
+    fill(184,170,124);
+    rect(225,115,280,63);
+
+    // Shadow
+    fill(20,16,0);
+    rect(205,175,300,5);
+
+    // Left foot
+    fill(160,147,100);
+    rect(205,180,60,60);
+
+    fill(209,208,182);
+    quad(205,240,265,240,300,340,170,340)
+
+    fill(20,16,0);
+    rect(230,230,10,20);
+
+    fill(184,170,124);
+    rect(227,270,15,50);
+    rect(170,340,130,10);
+
+    fill(67,59,41,20);
+    ellipse(235,360,170,10);
+
+    // Front foot
+    fill(160,147,100);
+    rect(380,180,70,80);
+
+    fill(209,208,182);
+    quad(380,260,450,260,500,400,330,400)
+
+    fill(20,16,0);
+    rect(410,250,10,20);
+
+    fill(67,59,41,40);
+    ellipse(430,409,230,10);
+
+    fill(184,170,124);
+    rect(406,300,20,80);
+    rect(330,400,170,10);
+
+
+
+    // Body
+    // Left side
+    fill(5,3,5);
+    rect(205,0,20,180);
+
+    fill(160,147,100,80);
+    rect(225,0,40,175);
+
+    fill(113,104,86);
+    rect(240,12,18,55);
+    rect(240,77,18,12);
+
+    // Top Squares
+    noFill()
+    stroke(168,160,128);
+    strokeWeight(3);
+    rect(300,0,30,25);
+    stroke(195,186,155);
+    rect(350,0,80,25);
+    rect(450,0,80,25);
+
+    rect(450,0,80,25);
+
+    // Second row
+    stroke(168,160,128);
+    fill(211,220,214);
+    rect(275,35,60,65);
+
+    fill(5,3,5);
+    stroke(195,186,155);
+    strokeWeight(2);
+    rect(351,35,60,65);
+    rect(283,45,20,45);
+
+    noFill();
+    strokeWeight(3);
+    stroke(209,208,182);
+    ellipse(381,68,58,58);
+
+    strokeWeight(5);
+    line(350,68,410,68);
+    line(381,40,381,95);
+
+    fill(209,208,182);
+    ellipse(381,68,20,20);
+
+    noFill();
+    strokeWeight(3)
+    stroke(195,186,155);
+    rect(425,35,40,65);
+    rect(480,35,40,65);
+
+    // Row 3
+    stroke(120,100,54);
+    rect(237,125,40,40);
+    rect(295,125,40,40);
+    rect(353,125,40,40);
+    rect(410,125,68,40);
+    rect(495,125,40,40);
+
+
+
+    //================ END DRAWING HERE ========================
+
+  }
+
+  function rotateEllipse(x,y,rx,ry,angle) {
+    translate(x,y);
+    rotate(PI * angle / 180);
+    ellipse(0,0,rx,ry);
+    resetMatrix();
+  }
+
+  function mouseOver() {
+    return mouseX >= 0 && mouseX < IMAGE_DIMENSION
+        && mouseY >= 0 && mouseY < IMAGE_DIMENSION
+  }
+
+  function drawOverlay() {
+    if ( !mouseOver() ) {
+      tint(255,150) //,255 * mouseX / IMAGE_DIMENSION);
+      image(overlay, 0, 0, 500, 500);
+      tint(255,255);
+    }
+  }
+
+  </script>
+  <style>
+    body {padding: 0; margin: 5% 0 0; background-color: #ccc;}
+    canvas {margin: 0 auto; display:block; background-color: white;}
+  </style>
+</head>
+<body>
+</body>
+</html>
