@@ -1,0 +1,82 @@
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.7/p5.min.js"></script>
+  <script>
+  var BACKGROUND_SRC = '3x3/image-0-2.png'; // <<-- CHANGE THIS TO YOUR ASSIGNED IMAGE
+  var IMAGE_DIMENSION = 500;    // Don't change this.
+
+  var overlay;
+
+  function setup() {
+    createCanvas(IMAGE_DIMENSION, IMAGE_DIMENSION);
+    colorMode(RGB, 255);
+    noStroke();
+    overlay = loadImage(BACKGROUND_SRC);
+    mouseX = -1;
+  }
+
+  function draw() {
+    clear(); // leave this at the top
+
+    //=============== START DRAWING HERE =======================
+
+    fill(177,159,105);
+    rect(250,0,100,60);
+    rect(441,4,45,55);
+    ellipse(290, 375, 30, 30);
+    ellipse(390, 335, 30, 30);
+
+    noFill();
+    stroke(177,159,105);
+    strokeWeight(10);
+    line(239,3,227,100);
+    line(261,154,245,100);
+    line(245,100,255,60);
+    line(338,154,345,60);
+    line(250,411,325,390);
+    line(387,342,488,364);
+    ellipse(298, 200, 80, 250);
+    ellipse(425, 200, 90, 230);
+    stroke(180);
+    line(278,57,285,0);
+    line(297,63,297,327);
+    line(488,72,427,313);
+    fill(176, 144, 84);
+    ellipse(405, 25, 50, 70);
+    noFill();
+    stroke(136,132,118);
+    line(288,321,244,384);
+    line(395, 334,437,62);
+    //rgb(102, 154, 47)
+    //================ END DRAWING HERE ========================
+
+    drawOverlay(); // leave this at the bottom
+  }
+
+  function mouseOver() {
+
+    document.querySelector("#coords").innerHTML = parseInt(mouseX) + ', ' + parseInt(mouseY);
+
+    return mouseX >= 0 && mouseX < IMAGE_DIMENSION
+        && mouseY >= 0 && mouseY < IMAGE_DIMENSION
+  }
+
+  function drawOverlay() {
+    if ( mouseOver() ) {
+      tint(255,255 * mouseX / IMAGE_DIMENSION);
+      //tint(255,255);
+      image(overlay, 0, 0, 500, 500);
+      tint(255,255);
+    }
+  }
+
+  </script>
+  <style>
+    body {padding: 0; margin: 5% 0 0; background-color: #ccc;}
+    canvas {margin: 0 auto; display:block; background-color: white;}
+  </style>
+</head>
+<body>
+  <div id="coords" name="coords" style="font-size: 18px;" />
+</body>
+</html>
