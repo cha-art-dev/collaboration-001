@@ -1,0 +1,182 @@
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.7/p5.min.js"></script>
+  <script>
+  var BACKGROUND_SRC = '3x3/image-2-2.png'; // <<-- CHANGE THIS TO YOUR ASSIGNED IMAGE
+  var IMAGE_DIMENSION = 500;    // Don't change this.
+
+  var overlay;
+
+  function setup() {
+    createCanvas(IMAGE_DIMENSION, IMAGE_DIMENSION);
+    colorMode(RGB, 255);
+    noStroke();
+    overlay = loadImage(BACKGROUND_SRC);
+    mouseX = -1;
+  }
+
+  function draw() {
+    clear(); // leave this at the top
+
+    //=============== START DRAWING HERE =======================
+
+    //========= R2D2 ==================
+
+    //==== Rock =======
+
+    fill(50);
+    ellipse(520,90,200,200);
+
+    fill(237, 230, 165);
+    quad(500,110,600,150,600,300,100,200);
+
+    //==== Box =======
+
+    fill(200);
+    quad(90,180,200,140,200,340,90,340);
+
+    //==== Body =======
+
+    fill(210);
+    quad(0,0,115,150,55,210,0,210);
+
+    fill(100);
+    quad(0,200,55,210,55,210,0,220);
+
+    fill(250);
+    quad(0,0,135,0,115,150,0,125);
+
+    fill(190);
+    quad(85,165,125,180,150,210,120,208);
+
+    //== Blue ====
+
+    fill(26, 34, 87);
+    quad(60,65,80,70,90,90,45,80);
+
+    fill(26, 34, 87);
+    quad(45,80,90,90,85,125,45,115);
+
+    fill(26, 34, 87);
+    quad(45,115,85,125,70,135,50,130);
+
+    fill(137, 169, 203);
+    quad(52,75,65,80,70,90,45,80);
+
+    fill(137, 169, 203);
+    quad(45,80,70,90,68,120,42,115);
+
+    fill(137, 169, 203);
+    quad(42,115,68,120,58,132,50,130);
+
+    //==== Leg ========
+
+    fill(210);
+    quad(180,125,240,130,205,150,145,145);
+
+    fill(220);
+    quad(150,0,225,0,235,235,160,240);
+
+    fill(240);
+    quad(205,150,240,130,247,270,145,265);
+
+    fill(190);
+    quad(145,145,205,150,205,270,145,265);
+
+    fill(220);
+    quad(145,265,205,270,220,390,105,370);
+
+    fill(250);
+    quad(205,270,245,230,285,320,220,410);
+
+    fill(150);
+    quad(220,275,240,255,260,310,235,345);
+
+    fill(230);
+    quad(218,390,278,305,285,320,220,410);
+
+    fill(180);
+    quad(105,370,218,390,220,410,100,390);
+
+    //== Wires ====
+
+    stroke(255);
+    strokeWeight(10);
+    line(240,180,215,235);
+
+    stroke(26, 34, 87);
+    strokeWeight(15);
+    line(231,198,223,215);
+
+    fill(100);
+    stroke(100);
+    strokeWeight(13);
+    ellipse(180,320,2,2);
+
+    stroke(235, 149, 69);
+    strokeWeight(10);
+    line(180,320,120,325);
+
+    fill(100);
+    stroke(100);
+    strokeWeight(13);
+    ellipse(180,340,2,2);
+
+    stroke(235, 149, 69);
+    strokeWeight(10);
+    line(180,340,110,335);
+
+    //== Blue ====
+
+    fill(26, 34, 87);
+    stroke(150);
+    strokeWeight(2);
+    quad(200,0,215,0,217,50,202,60);
+
+    fill(26, 34, 87);
+    stroke(150);
+    strokeWeight(2);
+    quad(203,70,218,60,220,130,205,140);
+
+    //======== GRID ===================
+//   noFill();
+//   stroke(127,62,90);
+//   strokeWeight(.5);
+
+//    line(100,0,100,500);
+//    line(200,0,200,500);
+//    line(300,0,300,500);
+//    line(400,0,400,500);
+
+//    line(0,100,500,100);
+//    line(0,200,500,200);
+//    line(0,300,500,300);
+//    line(0,400,500,400);
+
+    //================ END DRAWING HERE ========================
+
+    drawOverlay(); // leave this at the bottom
+  }
+
+  function mouseOver() {
+    return mouseX >= 0 && mouseX < IMAGE_DIMENSION
+        && mouseY >= 0 && mouseY < IMAGE_DIMENSION
+  }
+
+  function drawOverlay() {
+    if ( mouseOver() ) {
+      tint(255,255 * mouseX / IMAGE_DIMENSION);
+      image(overlay, 0, 0, 500, 500);
+      tint(255,255);
+    }
+  }
+
+  </script>
+  <style>
+    body {padding: 0; margin: 5% 0 0; background-color: #ccc;}
+    canvas {margin: 0 auto; display:block; background-color: rgb(237, 230, 165);}
+  </style>
+</head>
+<body>
+</body>
+</html>
