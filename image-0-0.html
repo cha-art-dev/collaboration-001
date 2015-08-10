@@ -1,0 +1,144 @@
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.7/p5.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>
+
+
+  var BACKGROUND_SRC = '3x3/image-0-0.png'; // <<-- CHANGE THIS TO YOUR ASSIGNED IMAGE
+  var IMAGE_DIMENSION = 500;    // Don't change this.
+
+  var overlay;
+
+  function setup() {
+    createCanvas(IMAGE_DIMENSION, IMAGE_DIMENSION);
+    colorMode(RGB, 255);
+    noStroke();
+    overlay = loadImage(BACKGROUND_SRC);
+    mouseX = -1;
+  }
+
+  function draw() {
+    clear(); // leave this at the top
+
+    //=============== START DRAWING HERE =======================
+    //Right Eye: 476, 139
+    var topheadCenter = [498, 96]
+    var lefteyebrowCenter = [427, 112]
+    var righteyebrowCenter = [474, 126]
+    var righteyeCenter = [476,139]
+    var lefteyeCenter = [423,126]
+    var mouthCoords = [425, 186, 446, 192]
+    var jawCoords = [406, 110, 499, 232]
+    var chestCircle = [429,463]
+    var upperArm = [233,313,300, 459]
+    var lowerArm = [165,400,300, 459]
+
+    //Desert
+    fill(190, 187, 170);
+    rotatedRect(0, 440, 500, 300, .01);
+
+
+    //Head
+    fill(237, 229, 170);
+    //--top
+    ellipse(topheadCenter[0], topheadCenter[1], 150, 150);
+    //--jaw
+    rect(jawCoords[0], jawCoords[1], jawCoords[2] - jawCoords[0], jawCoords[3] - jawCoords[1]);
+
+
+    //--mouth
+    stroke(50);
+    strokeWeight(2);
+    line(mouthCoords[0],mouthCoords[1],mouthCoords[2],mouthCoords[3]);
+
+
+    //Eyebrows
+    noStroke();
+    fill(148, 132, 48);
+    rotatedEllipse(lefteyebrowCenter[0], lefteyebrowCenter[1], 45, 22, .35);
+    rotatedEllipse(righteyebrowCenter[0], righteyebrowCenter[1], 45, 22, .35);
+    //Eyes
+    //--outer
+    fill(100);
+    ellipse(righteyeCenter[0], righteyeCenter[1], 22, 25);
+    ellipse(lefteyeCenter[0], lefteyeCenter[1], 22, 25);
+    //--inner
+    fill(0);
+    ellipse(righteyeCenter[0], righteyeCenter[1], 10, 12);
+    ellipse(lefteyeCenter[0], lefteyeCenter[1], 10, 12);
+
+    //Chest
+    noStroke();
+    //--Box
+    fill(257, 249, 190);
+    rotatedRect(324, 250, 200, 300, .1);
+
+    //--Circle
+    fill(237, 229, 170);
+    ellipse(chestCircle[0], chestCircle[1], 92, 92);
+
+
+    //Arms
+    fill(257, 249, 190);
+    //--top
+    noStroke();
+    rotatedRect(upperArm[0], upperArm[1], 75, 145, .8);
+    //--bottom
+    rotatedRect(lowerArm[0], lowerArm[1], 145, 80, 1.1);
+    //--connector
+    stroke(100);
+    strokeWeight(10);
+    line(238, 416, 228, 497);
+
+    fill(0,230,0);
+    var centerx = IMAGE_DIMENSION / 2;
+    var centery = IMAGE_DIMENSION / 2;
+
+    noFill();
+    stroke(127, 62, 90);
+    strokeWeight(.5);
+    rect(50,45)
+    //================ END DRAWING HERE ========================
+
+    drawOverlay(); // leave this at the bottom
+  }
+
+  function mouseOver() {
+    $( "#coordinates" ).text(String(mouseX) + ", " + String(mouseY))
+    return mouseX >= 0 && mouseX < IMAGE_DIMENSION
+        && mouseY >= 0 && mouseY < IMAGE_DIMENSION
+  }
+
+  function drawOverlay() {
+    if ( mouseOver() ) {
+      tint(255,255 * mouseX / IMAGE_DIMENSION);
+      image(overlay, 0, 0, 500, 500);
+      tint(255,255);
+    }
+  }
+
+  function rotatedEllipse(x, y, xrad, yrad, angle){
+    translate(x, y);
+    rotate(angle);
+    ellipse(0, 0, xrad, yrad);
+    resetMatrix();
+  }
+
+  function rotatedRect(x, y, xsize, ysize, angle){
+    translate(x, y);
+    rotate(angle);
+    rect(0, 0, xsize, ysize);
+    resetMatrix();
+  }
+
+  </script>
+  <style>
+    body {padding: 0; margin: 5% 0 0; background-color: #ccc;}
+    canvas {margin: 0 auto; display:block; background-color: white;}
+  </style>
+</head>
+<body>
+  <div id="coordinates"></div>
+</body>
+</html>
