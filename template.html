@@ -2,7 +2,7 @@
 <head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.7/p5.min.js"></script>
   <script>
-  var BACKGROUND_SRC = '4x4/image-2-1.png'; // <<-- CHANGE THIS TO YOUR ASSIGNED IMAGE
+  var BACKGROUND_SRC = '3x3/image-2-1.png'; // <<-- CHANGE THIS TO YOUR ASSIGNED IMAGE
   var IMAGE_DIMENSION = 500;    // Don't change this.
 
   var overlay;
@@ -20,6 +20,17 @@
 
     //=============== START DRAWING HERE =======================
 
+    fill(214, 219, 223);
+    ellipse(-15, 185, 350, 350);
+
+    noFill();
+
+    strokeCap('square');
+    stroke(221, 219, 183)
+
+    strokeWeight(300); line(00,350, -20, 500);
+
+
     //================ END DRAWING HERE ========================
 
     drawOverlay(); // leave this at the bottom
@@ -34,11 +45,11 @@
   }
 
   function drawOverlay() {
-    if ( mouseOver() ) {
-      tint(255,255 * mouseX / IMAGE_DIMENSION);
+    // if ( mouseOver() ) {
+      tint(255,255 * 0.5);
       image(overlay, 0, 0, 500, 500);
-      tint(255,255);
-    }
+      // tint(255,255);
+    // }
   }
 
   </script>
