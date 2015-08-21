@@ -1,0 +1,128 @@
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.7/p5.min.js"></script>
+  <script>
+  var BACKGROUND_SRC = '3x3/image-2-1.png'; // <<-- CHANGE THIS TO YOUR ASSIGNED IMAGE
+  var IMAGE_DIMENSION = 500;    // Don't change this.
+
+  var overlay;
+  var tintBool = true;
+
+  function setup() {
+    createCanvas(IMAGE_DIMENSION, IMAGE_DIMENSION);
+    colorMode(RGB, 255);
+    noStroke();
+    overlay = loadImage(BACKGROUND_SRC);
+    mouseX = -1;
+  }
+
+  function draw() {
+    clear(); // leave this at the top
+
+    //=============== START DRAWING HERE =======================
+
+    //python -m SimpleHTTPServer
+
+    //rect(x,y,w,h);
+    //ellipse(x,y,w,h);
+    //line(x1,y1,x2,y2);
+    //quad(x1,y1,x2,y2,...);
+
+    background(200,200,100);
+
+    fill(200,180,80);
+    ellipse(500,140,550,200);
+
+    fill(240,250,255);
+
+    ellipse(0,210,325,375);  //head bkg
+
+    fill(230,230,230);
+    quad(0,215,165,215,130,500,0,500); //body bkg
+
+    //LEG
+
+    fill(0);
+    quad(200,360,230,370,225,500,182,500);
+
+    fill(250, 250, 210);
+    quad(123,342,176,331,210,250,145,253); //legRotatorTop
+    ellipse(150,340,55,175); //legTopEllipse
+    fill(240,240,200)
+    quad(203,477,145,478,140,460,194,465); //legToplower
+    quad(195,466,140,461,123,342,175,330); //legTop
+
+    fill(230,230,190);
+    quad(147,477,185,475,186,500,151,500); //legBottom
+
+
+    fill(250,250,250);
+    quad(203,477,194,465,175,330,196,335); //legTopShadow
+    quad(175,330,194,338,188,287);
+
+    ellipse(208,325,50,150) //LegRotatorFace
+
+    fill(100,100,90);
+    stroke(0,0,0);
+    strokeWeight(15);
+    line(208,311,209,350); //LegRotatorShadow
+
+    fill(0);
+    ellipse(0,135,25,25);
+
+    fill(0,0,255);
+    strokeWeight(0);
+    quad(40,120,68,125,68,180,35,170);
+    quad(76,126,106,135,106,185,76,175);
+    quad(112,136,133,147,136,201,112,188);
+    quad(139,153,151,163,159,209,141,200);
+
+    strokeWeight(1);
+    if( tintBool ) {
+      fill(255 * mouseX/IMAGE_DIMENSION);
+    } else {
+      fill(0);
+    }
+    text(mouseX + " | " + mouseY,400,100);
+
+    //================ END DRAWING HERE ========================
+
+    drawOverlay(); // leave this at the bottom
+  }
+
+  function mouseOver() {
+    return mouseX >= 0 && mouseX < IMAGE_DIMENSION
+        && mouseY >= 0 && mouseY < IMAGE_DIMENSION
+  }
+
+  function drawOverlay() {
+//  if ( mouseOver() ) {
+    if( tintBool ) {
+      tint(100, 255 * mouseX/IMAGE_DIMENSION);
+    } else {
+      tint(100,150);
+    }
+      image(overlay, 0, 0, 500, 500);
+      tint(100,255);
+//    }
+  }
+
+  function mousePressed() {
+    console.log(mouseX,mouseY);
+    if ( tintBool == true ) {
+      tintBool = false;
+    } else {
+      tintBool = true;
+    }
+  }
+
+  </script>
+  <style>
+  html {cursor: crosshair;}
+    body {padding: 0; margin: 5% 0 0; background-color: #ccc;}
+    canvas {margin: 0 auto; display:block; background-color: white;}
+  </style>
+</head>
+<body>
+</body>
+</html>
