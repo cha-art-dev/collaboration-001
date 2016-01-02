@@ -45,11 +45,11 @@
   }
 
   function drawOverlay() {
-    // if ( mouseOver() ) {
-      tint(255,255 * 0.5);
+    if ( mouseOver() ) {
+      tint(255,mouseX);
       image(overlay, 0, 0, 500, 500);
-      // tint(255,255);
-    // }
+      tint(255,255);
+    }
   }
 
   </script>
