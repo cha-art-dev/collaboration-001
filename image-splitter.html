@@ -1,0 +1,45 @@
+<html>
+<head>
+  <title>Image Splitter</title>
+  <style>
+  body { margin: 0 33% }
+  img { border: 1px solid white; }
+  </style>
+</head>
+<body>
+</body>
+<script>
+  var src = 'c3po+r2d2.png';
+  var img = new Image();
+  img.onload = function() {
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
+    for (var i=2; i<5; i++) {
+      append('h1', {body: i+'x'+i+' images'});
+      canvas.width = img.width / i;
+      canvas.height = img.height / i;
+      for (var y=0; y<i; y++) {
+        for (var x=0; x<i; x++) {
+          ctx.drawImage(img, -x*canvas.width, -y*canvas.height);
+          var dataURL = canvas.toDataURL()
+          var link = append('a', {href:dataURL, download:'image-'+x+'-'+y+'.png'});
+          append('img', {src:dataURL}, link);
+        }
+      }
+    }
+  }
+  img.src = src;
+
+  function append( tag, ats, parent ) {
+    var el = document.createElement(tag);
+    for (var k in ats) {
+      if (k == 'body')
+        el.appendChild(document.createTextNode(ats[k]));
+      else
+        el.setAttribute(k, ats[k]);
+    }
+    (parent || document.body).appendChild(el);
+    return el;
+  }
+</script>
+</html>
